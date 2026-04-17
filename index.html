@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>トラキチ農園｜シン・にんにく 戦略資料</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+    background: #f5f0e8;
+    color: #2d2d2d;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px;
+  }
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  .subtitle {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 48px;
+    text-align: center;
+  }
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    max-width: 680px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.15s, box-shadow 0.15s;
+    display: block;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  }
+  .card-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 8px;
+  }
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .card-desc {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  .card-1 { border-left: 4px solid #5a8a4a; }
+  .card-2 { border-left: 4px solid #8b3a2a; }
+  .card-3 { border-left: 4px solid #2a5a8b; }
+  footer {
+    margin-top: 60px;
+    font-size: 0.8rem;
+    color: #aaa;
+  }
+</style>
+</head>
+<body>
+
+<h1>トラキチ農園</h1>
+<p class="subtitle">シン・にんにく ― 戦略資料一覧</p>
+
+<div class="cards">
+  <a class="card card-1" href="storyboard-v1.html">
+    <div class="card-tag">PV 絵コンテ v1</div>
+    <div class="card-title">シン・にんにく PV 絵コンテシート</div>
+    <div class="card-desc">15秒・60秒バージョンの絵コンテ、ナレーション台本、ヒアリングシート、素材チェックリストを収録。</div>
+  </a>
+
+  <a class="card card-2" href="storyboard-v2.html">
+    <div class="card-tag">PV 絵コンテ v2</div>
+    <div class="card-title">サムライ・ファーマー戦略</div>
+    <div class="card-desc">武将農家キャラクターを軸にした v2 絵コンテ。SNS運用方針・リスク管理を含む。</div>
+  </a>
+
+  <a class="card card-3" href="sns-strategy.html">
+    <div class="card-tag">SNS 戦略提案書 v4</div>
+    <div class="card-title">SNS設計の方程式</div>
+    <div class="card-desc">なぜSNSか・なぜ設計か・ブランドソウルから始まり、プラットフォーム戦略・週次コンテンツ矩陣・KPI設計まで網羅した総合提案書。</div>
+  </a>
+</div>
+
+<footer>© 2024 トラキチ農園</footer>
+
+</body>
+</html>
