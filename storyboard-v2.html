@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>シン・にんにく PV絵コンテ v2 ｜サムライ・ファーマー戦略</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sumi: #0a0805;
+    --sumi-soft: #1a1410;
+    --washi: #ebe1cc;
+    --washi-dark: #d4c5a3;
+    --kin: #c9a455;
+    --kin-bright: #e8c878;
+    --shu: #b8331c;
+    --shu-deep: #7a1f10;
+    --hagane: #8a8377;
+    --line: #2a2218;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Shippori Mincho', serif;
+    background: var(--sumi);
+    color: var(--washi);
+    line-height: 1.8;
+    font-weight: 400;
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(201, 164, 85, 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 85% 70%, rgba(184, 51, 28, 0.05) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  /* 和紙テクスチャ風 */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.008) 2px, rgba(255,255,255,0.008) 4px),
+      repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,0.008) 2px, rgba(255,255,255,0.008) 4px);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* 装飾フレーム共通 */
+  .frame-corner {
+    position: relative;
+  }
+
+  .frame-corner::before,
+  .frame-corner::after {
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-color: var(--kin);
+  }
+
+  /* ヘッダー */
+  .header {
+    background:
+      linear-gradient(180deg, rgba(10, 8, 5, 0.92), rgba(10, 8, 5, 0.96)),
+      radial-gradient(ellipse at center, var(--shu-deep) 0%, var(--sumi) 70%);
+    padding: 80px 40px 100px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 8px double var(--kin);
+    z-index: 2;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 600px; height: 600px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(184, 51, 28, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+
+  .header-mon {
+    font-size: 48px;
+    color: var(--kin);
+    margin-bottom: 24px;
+    letter-spacing: 0.3em;
+    text-shadow: 0 0 30px rgba(201, 164, 85, 0.4);
+  }
+
+  .header-kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: var(--kin);
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  .header h1 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: 0.05em;
+    margin-bottom: 24px;
+    color: var(--washi);
+    text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  }
+
+  .header h1 .red {
+    color: var(--shu);
+    display: block;
+    font-size: 0.6em;
+    margin-top: 12px;
+    letter-spacing: 0.2em;
+  }
+
+  .header-tagline {
+    font-size: clamp(16px, 2vw, 22px);
+    color: var(--kin-bright);
+    margin: 32px 0;
+    letter-spacing: 0.15em;
+    font-weight: 500;
+  }
+
+  .header-subtitle {
+    font-size: 14px;
+    color: var(--washi-dark);
+    max-width: 760px;
+    margin: 0 auto;
+    line-height: 2;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+
+  .header-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 24px;
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(201, 164, 85, 0.3);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .meta-item {
+    text-align: center;
+  }
+
+  .meta-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    color: var(--kin);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .meta-value {
+    color: var(--washi);
+    font-weight: 500;
+    font-size: 14px;
+    font-family: 'Shippori Mincho', serif;
+  }
+
+  /* ナビ */
+  .toc {
+    background: var(--sumi-soft);
+    padding: 20px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--kin);
+    backdrop-filter: blur(10px);
+  }
+
+  .toc-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .toc-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--kin);
+    margin-right: 12px;
+  }
+
+  .toc a {
+    color: var(--washi);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 16px;
+    border: 1px solid var(--kin);
+    transition: all 0.3s;
+    font-family: 'Shippori Mincho', serif;
+    letter-spacing: 0.1em;
+  }
+
+  .toc a:hover {
+    background: var(--kin);
+    color: var(--sumi);
+  }
+
+  /* セクション共通 */
+  .section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .section-header {
+    margin-bottom: 56px;
+    padding-bottom: 32px;
+    position: relative;
+    text-align: center;
+  }
+
+  .section-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--kin);
+  }
+
+  .section-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--kin);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 900;
+    line-height: 1.3;
+    margin-bottom: 16px;
+    color: var(--washi);
+    letter-spacing: 0.05em;
+  }
+
+  .section-title .accent {
+    color: var(--shu);
+  }
+
+  .section-desc {
+    font-size: 14px;
+    color: var(--washi-dark);
+    max-width: 720px;
+    margin: 0 auto;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+
+  /* キャラクター・カード */
+  .character-board {
+    background:
+      linear-gradient(135deg, var(--sumi-soft) 0%, var(--sumi) 100%);
+    border: 2px solid var(--kin);
+    padding: 48px;
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  .character-board::before,
+  .character-board::after {
+    content: '';
+    position: absolute;
+    width: 32px;
+    height: 32px;
+  }
+  .character-board::before {
+    top: -2px; left: -2px;
+    border-top: 4px solid var(--shu);
+    border-left: 4px solid var(--shu);
+  }
+  .character-board::after {
+    bottom: -2px; right: -2px;
+    border-bottom: 4px solid var(--shu);
+    border-right: 4px solid var(--shu);
+  }
+
+  .character-name {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 900;
+    color: var(--kin-bright);
+    margin-bottom: 8px;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+
+  .character-name-en {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    color: var(--washi-dark);
+    text-align: center;
+    margin-bottom: 32px;
+    text-transform: uppercase;
+  }
+
+  .character-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 32px;
+    margin-top: 32px;
+  }
+
+  .char-attr {
+    border-left: 3px solid var(--kin);
+    padding-left: 20px;
+  }
+
+  .char-attr-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--kin);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .char-attr-value {
+    font-size: 14px;
+    color: var(--washi);
+    line-height: 1.8;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+
+  /* 口上ボックス */
+  .kojo-box {
+    background: var(--sumi-soft);
+    border: 3px double var(--kin);
+    padding: 40px;
+    margin: 48px 0;
+    text-align: center;
+    position: relative;
+  }
+
+  .kojo-label {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--shu);
+    color: var(--washi);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    padding: 4px 16px;
+  }
+
+  .kojo-text {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(18px, 2.5vw, 26px);
+    line-height: 2;
+    color: var(--kin-bright);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+
+  .kojo-text .red {
+    color: var(--shu);
+  }
+
+  /* コンセプトカード */
+  .concept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .concept-card {
+    background: var(--sumi-soft);
+    border: 1px solid var(--kin);
+    padding: 32px;
+    position: relative;
+    transition: transform 0.3s;
+  }
+
+  .concept-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .concept-card::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px;
+    width: 24px;
+    height: 24px;
+    border-top: 3px solid var(--shu);
+    border-left: 3px solid var(--shu);
+  }
+
+  .concept-icon {
+    font-size: 32px;
+    color: var(--kin);
+    margin-bottom: 16px;
+    text-align: center;
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 900;
+  }
+
+  .concept-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--kin);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .concept-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--washi);
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .concept-body {
+    font-size: 13px;
+    color: var(--washi-dark);
+    line-height: 1.9;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+
+  /* カット（シーン）カード */
+  .cut {
+    background: var(--sumi-soft);
+    border: 1px solid var(--kin);
+    margin-bottom: 40px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .cut::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--shu);
+  }
+
+  .cut-header {
+    background:
+      linear-gradient(135deg, var(--sumi) 0%, var(--sumi-soft) 100%);
+    color: var(--washi);
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-bottom: 1px solid var(--kin);
+  }
+
+  .cut-header-left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .cut-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--kin);
+  }
+
+  .cut-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .cut-title .marker {
+    color: var(--shu);
+    margin-right: 8px;
+  }
+
+  .cut-timing {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--kin);
+    letter-spacing: 0.15em;
+    background: rgba(201, 164, 85, 0.1);
+    padding: 6px 14px;
+    border: 1px solid var(--kin);
+  }
+
+  .cut-body {
+    padding: 32px;
+  }
+
+  .cut-visual {
+    background:
+      linear-gradient(135deg, rgba(184, 51, 28, 0.1), rgba(201, 164, 85, 0.05));
+    border: 1px solid var(--shu-deep);
+    padding: 24px;
+    margin-bottom: 24px;
+    position: relative;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+
+  .cut-visual::before {
+    content: '映像';
+    position: absolute;
+    top: -10px;
+    left: 16px;
+    background: var(--shu);
+    color: var(--washi);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    padding: 3px 10px;
+  }
+
+  .cut-visual-text {
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--washi);
+  }
+
+  .cut-narration {
+    background: var(--sumi);
+    border-left: 4px solid var(--kin);
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 17px;
+    line-height: 2;
+    position: relative;
+    color: var(--kin-bright);
+    font-weight: 500;
+  }
+
+  .cut-narration::before {
+    content: '口上 / NARRATION';
+    position: absolute;
+    top: -10px;
+    left: 16px;
+    background: var(--kin);
+    color: var(--sumi);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    padding: 3px 10px;
+    font-weight: 700;
+  }
+
+  .cut-telop {
+    background: var(--shu);
+    color: var(--washi);
+    padding: 18px 24px;
+    margin-bottom: 20px;
+    font-weight: 900;
+    text-align: center;
+    font-size: 22px;
+    letter-spacing: 0.08em;
+    position: relative;
+    font-family: 'Shippori Mincho', serif;
+    border: 2px solid var(--kin);
+  }
+
+  .cut-telop::before {
+    content: 'テロップ';
+    position: absolute;
+    top: -10px;
+    left: 16px;
+    background: var(--kin);
+    color: var(--sumi);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    padding: 3px 10px;
+    font-weight: 700;
+  }
+
+  .cut-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px dashed var(--kin);
+  }
+
+  .cut-meta-item {
+    font-size: 12px;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+
+  .cut-meta-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    color: var(--kin);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  .cut-meta-value {
+    color: var(--washi);
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  /* SNS運用カード */
+  .sns-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .sns-card {
+    background: var(--sumi-soft);
+    border: 1px solid var(--kin);
+    padding: 32px;
+    position: relative;
+  }
+
+  .sns-tag {
+    display: inline-block;
+    background: var(--shu);
+    color: var(--washi);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    padding: 4px 10px;
+    margin-bottom: 16px;
+  }
+
+  .sns-card h3 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--kin-bright);
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+
+  .sns-card p {
+    font-size: 13px;
+    color: var(--washi-dark);
+    line-height: 1.9;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+
+  /* リスクボックス */
+  .risk-box {
+    background: linear-gradient(135deg, rgba(184, 51, 28, 0.15), rgba(122, 31, 16, 0.1));
+    border: 2px solid var(--shu);
+    padding: 32px;
+    position: relative;
+  }
+
+  .risk-box-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--shu);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--shu);
+    text-align: center;
+  }
+
+  .risk-list {
+    display: grid;
+    gap: 16px;
+  }
+
+  .risk-item {
+    background: var(--sumi);
+    border-left: 4px solid var(--shu);
+    padding: 18px 22px;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+
+  .risk-item-head {
+    font-weight: 700;
+    color: var(--kin-bright);
+    margin-bottom: 6px;
+    font-size: 14px;
+  }
+
+  .risk-item-body {
+    font-size: 13px;
+    color: var(--washi-dark);
+    line-height: 1.8;
+  }
+
+  /* ナレーション台本ブロック */
+  .script-block {
+    background: var(--sumi-soft);
+    border: 1px solid var(--kin);
+    padding: 40px;
+  }
+
+  .script-section-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--kin-bright);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--kin);
+  }
+
+  .script-content {
+    background: var(--sumi);
+    padding: 32px;
+    border-left: 4px solid var(--shu);
+    font-family: 'Shippori Mincho', serif;
+    font-size: 16px;
+    line-height: 2.2;
+    color: var(--washi);
+  }
+
+  .script-time {
+    color: var(--kin);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+  }
+
+  .script-pause {
+    color: var(--shu);
+    font-weight: 700;
+  }
+
+  /* フッター */
+  .footer {
+    background: var(--sumi-soft);
+    color: var(--washi-dark);
+    padding: 56px 40px;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    margin-top: 80px;
+    border-top: 8px double var(--kin);
+    font-family: 'Noto Sans JP', sans-serif;
+    position: relative;
+    z-index: 2;
+  }
+
+  .footer-mon {
+    font-size: 28px;
+    color: var(--kin);
+    margin-bottom: 16px;
+    letter-spacing: 0.4em;
+  }
+
+  .footer strong {
+    color: var(--kin-bright);
+    display: block;
+    margin-bottom: 12px;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 18px;
+    letter-spacing: 0.1em;
+  }
+
+  /* 印刷対応 */
+  @media print {
+    body { background: white; color: black; }
+    .toc { display: none; }
+    .cut { break-inside: avoid; page-break-inside: avoid; }
+    .section { padding: 40px 20px; }
+  }
+
+  /* モバイル */
+  @media (max-width: 640px) {
+    .header { padding: 60px 20px 80px; }
+    .section { padding: 60px 20px; }
+    .cut-header { padding: 18px 22px; }
+    .cut-body { padding: 22px; }
+    .cut-header-left { gap: 14px; }
+    .cut-number { font-size: 24px; }
+    .cut-title { font-size: 16px; }
+    .character-board { padding: 28px; }
+    .kojo-box { padding: 28px 20px; }
+  }
+
+  /* 小さい装飾要素 */
+  .ornament {
+    text-align: center;
+    color: var(--kin);
+    font-size: 18px;
+    letter-spacing: 0.5em;
+    margin: 24px 0;
+    opacity: 0.6;
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="header-mon">⚔ 紋 ⚔</div>
+    <div class="header-kicker">STORYBOARD v2.0 / SAMURAI FARMER STRATEGY</div>
+    <h1>
+      シン・にんにく PV絵コンテ
+      <span class="red">— 武将農家、爆誕 —</span>
+    </h1>
+    <div class="header-tagline">
+      天下無双の食材は、土と鉄と魂で鍛えられる。
+    </div>
+    <p class="header-subtitle">
+      元貿易商という「ビジネスの説得力」に、甲冑と日本刀という「視覚の暴力」を掛け合わせる。<br>
+      数ある農業系SNSアカウントから完全に一線を画す、唯一無二のエンタメ×最高級食材ドキュメンタリーへ昇華させる戦略絵コンテ。
+    </p>
+    <div class="header-meta">
+      <div class="meta-item">
+        <div class="meta-label">Brand</div>
+        <div class="meta-value">トラキチ農園</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Product</div>
+        <div class="meta-value">シン・にんにく</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Persona</div>
+        <div class="meta-value">サムライ・ファーマー</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Format</div>
+        <div class="meta-value">9:16 / FHD</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-label">Duration</div>
+        <div class="meta-value">15s + 60s</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="toc-inner">
+    <span class="toc-label">目次</span>
+    <a href="#persona">人物設定</a>
+    <a href="#concept">戦略</a>
+    <a href="#kojo">口上</a>
+    <a href="#short">15秒版</a>
+    <a href="#long">60秒版</a>
+    <a href="#sns">SNS運用</a>
+    <a href="#narration">台本</a>
+    <a href="#risk">リスク管理</a>
+  </div>
+</nav>
+
+<!-- 人物設定 -->
+<section class="section" id="persona">
+  <div class="section-header">
+    <div class="section-number">01 / CHARACTER DESIGN</div>
+    <h2 class="section-title">「武将農家」<span class="accent">人物設定</span></h2>
+    <p class="section-desc">
+      この戦略の中核。経営者ご本人の強みを最大化したキャラクター設計書。<br>
+      全ての投稿・動画・LP・取材対応は、この人物像から逸脱しないこと。
+    </p>
+  </div>
+
+  <div class="character-board">
+    <div class="character-name">虎吉の大将</div>
+    <div class="character-name-en">— THE SAMURAI FARMER —</div>
+
+    <div class="character-grid">
+      <div class="char-attr">
+        <div class="char-attr-label">前世（過去）</div>
+        <div class="char-attr-value">世界を渡り歩いた元貿易商。あらゆるビジネスを経験し、世界中に「縁故（コネクション）」を持つ男。</div>
+      </div>
+      <div class="char-attr">
+        <div class="char-attr-label">現世（現在）</div>
+        <div class="char-attr-value">大阪・箕面にて家業の畑を継ぎ、「シン・にんにく」を育てる武将農家。日本刀を愛し、特注の甲冑を纏う。</div>
+      </div>
+      <div class="char-attr">
+        <div class="char-attr-label">使命</div>
+        <div class="char-attr-value">「スーパーの安いだけのにんにくで満足する現代人を目覚めさせる」。天下無双の一片で食卓を制する。</div>
+      </div>
+      <div class="char-attr">
+        <div class="char-attr-label">口調</div>
+        <div class="char-attr-value">時代劇の大将調。堂々として強気、しかし最後はにっこり人懐っこく笑う。武と笑のギャップ。</div>
+      </div>
+      <div class="char-attr">
+        <div class="char-attr-label">象徴アイテム</div>
+        <div class="char-attr-value">特注甲冑／日本刀／泥のついたにんにく／鍬（くわ）／パスポート</div>
+      </div>
+      <div class="char-attr">
+        <div class="char-attr-label">ファンの呼び方</div>
+        <div class="char-attr-value">家臣（かしん）／一族（いちぞく）。コメント欄での合言葉は「いざ、参る！」</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 戦略コンセプト -->
+<section class="section" id="concept">
+  <div class="section-header">
+    <div class="section-number">02 / STRATEGY</div>
+    <h2 class="section-title">三本の<span class="accent">戦略柱</span></h2>
+    <p class="section-desc">
+      なぜ「武将×にんにく」が機能するのか。SNSアルゴリズム・人間心理・ブランド構築の3観点から設計。
+    </p>
+  </div>
+
+  <div class="concept-grid">
+    <div class="concept-card">
+      <div class="concept-icon">壱</div>
+      <div class="concept-label">VISUAL IMPACT</div>
+      <div class="concept-title">視覚の暴力<br>（ギャップ萌え）</div>
+      <div class="concept-body">
+        甲冑の輝きと泥まみれの畑という「あり得ない組み合わせ」が、SNSタイムラインでスクロールを強制停止させる。違和感こそが最大のフック。「何だこのアカウントは!?」が一瞬で生まれる設計。
+      </div>
+    </div>
+
+    <div class="concept-card">
+      <div class="concept-icon">弐</div>
+      <div class="concept-label">PHILOSOPHY LINK</div>
+      <div class="concept-title">日本刀×にんにく<br>「極み」の哲学</div>
+      <div class="concept-body">
+        どちらも「土（鉄）と火と水と職人の魂」で鍛え上げられる。名刀が玉鋼から生まれるように、究極のにんにくは箕面の土から生まれる。刀の手入れ映像とにんにくの土払い映像をクロスオーバーさせ、語る価値の格を上げる。
+      </div>
+    </div>
+
+    <div class="concept-card">
+      <div class="concept-icon">参</div>
+      <div class="concept-label">CHARACTER POWER</div>
+      <div class="concept-title">大将キャラの<br>圧倒的な属人性</div>
+      <div class="concept-body">
+        「人前に出るのが得意」という強みを最大活用。固定の口上、強気のメッセージ、最後の人懐っこい笑顔。熱狂的なファン（家臣）を生み、商品ではなく「人」を応援される構造へ。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 口上 -->
+<section class="section" id="kojo">
+  <div class="section-header">
+    <div class="section-number">03 / SIGNATURE OPENING</div>
+    <h2 class="section-title">固定<span class="accent">口上</span></h2>
+    <p class="section-desc">
+      全てのショート動画の冒頭に必ず入れる「決め台詞」。視聴者がアカウントを認識する最強の音声ロゴ。
+    </p>
+  </div>
+
+  <div class="kojo-box">
+    <div class="kojo-label">OPENING / 全動画共通</div>
+    <div class="kojo-text">
+      我こそは、世界を渡り歩いた<span class="red">元貿易商</span>！<br>
+      今は箕面の地で、<br>
+      <span class="red">天下無双の『シン・にんにく』</span>を育てる者なり！
+    </div>
+  </div>
+
+  <div class="ornament">⚔ ◆ ⚔</div>
+
+  <div class="kojo-box" style="border-color: var(--shu);">
+    <div class="kojo-label" style="background: var(--kin); color: var(--sumi);">CLOSING / CTA共通</div>
+    <div class="kojo-text">
+      天下無双の味、トラキチ農園の『シン・にんにく』。<br>
+      <span class="red">いざ、実食！</span>
+    </div>
+  </div>
+</section>
+
+<!-- 15秒版 -->
+<section class="section" id="short">
+  <div class="section-header">
+    <div class="section-number">04 / SHORT VERSION</div>
+    <h2 class="section-title">15秒版 <span class="accent">絵コンテ</span></h2>
+    <p class="section-desc">
+      TikTok / Reels主戦場用。3秒で甲冑をぶち込み、スクロールを止める設計。5カット構成。
+    </p>
+  </div>
+
+  <!-- 15s Cut 1 -->
+  <div class="cut">
+    <div class="cut-header">
+      <div class="cut-header-left">
+        <div class="cut-number">01</div>
+        <div class="cut-title"><span class="marker">▎</span>視覚の暴力</div>
+      </div>
+      <div class="cut-timing">00:00 - 00:03 / 3s</div>
+    </div>
+    <div class="cut-body">
+      <div class="cut-telop">武将、にんにくを掘る。</div>
+      <div class="cut-visual">
+        <div class="cut-visual-text">
+          ローアングル。眩しい太陽の下、特注の甲冑を纏った武将が畑に立つ全身ショット（1.5秒）。<br>
+          → カット切替 → 籠手（こて）をつけた手で、土から「シン・にんにく」を力強く引き抜くマクロショット（1.5秒）。土と泥がドラマチックに飛び散る。
+        </div>
+      </div>
+      <div class="cut-narration">
+        （無音 → 鎧の擦れる音 → 土を掘る音）
+      </div>
+      <div class="cut-meta">
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">BGM</div>
+          <div class="cut-meta-value">和太鼓の重低音 → 一瞬の静寂</div>
+        </div>
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">画角</div>
+          <div class="cut-meta-value">9:16 / ローアングル → マクロ</div>
+        </div>
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">編集意図</div>
+          <div class="cut-meta-value">3秒離脱を防ぐ最大級フック</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 15s Cut 2 -->
+  <div class="cut">
+    <div class="cut-header">
+      <div class="cut-header-left">
+        <div class="cut-number">02</div>
+        <div class="cut-title"><span class="marker">▎</span>口上（名乗り）</div>
+      </div>
+      <div class="cut-timing">00:03 - 00:07 / 4s</div>
+    </div>
+    <div class="cut-body">
+      <div class="cut-visual">
+        <div class="cut-visual-text">
+          甲冑姿の武将が立ち上がり、カメラを正面から見据える。畑が背景。風で旗指物（はたさしもの／なければ手ぬぐい）がなびく。
+        </div>
+      </div>
+      <div class="cut-narration">
+        我こそは、世界を渡り歩いた元貿易商！<br>
+        天下無双の『シン・にんにく』を育てる者なり！
+      </div>
+      <div class="cut-meta">
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">音声</div>
+          <div class="cut-meta-value">経営者本人の生声推奨（迫力優先）</div>
+        </div>
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">編集意図</div>
+          <div class="cut-meta-value">毎回同じ口上で「音声ロゴ」化</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 15s Cut 3 -->
+  <div class="cut">
+    <div class="cut-header">
+      <div class="cut-header-left">
+        <div class="cut-number">03</div>
+        <div class="cut-title"><span class="marker">▎</span>哲学リンク（刀×にんにく）</div>
+      </div>
+      <div class="cut-timing">00:07 - 00:10 / 3s</div>
+    </div>
+    <div class="cut-body">
+      <div class="cut-telop">名刀と、究極のにんにく。</div>
+      <div class="cut-visual">
+        <div class="cut-visual-text">
+          【交互カット・1秒ずつ】<br>
+          ① 日本刀の刀身が光を反射するマクロショット<br>
+          ② シン・にんにくの白い断面のマクロショット<br>
+          ③ 刀の柄を握る手 ＝ にんにくを握る手（同じ構図で対比）
+        </div>
+      </div>
+      <div class="cut-narration">
+        （シズル音優先：刀身の擦れ音、にんにくが切れる音）
+      </div>
+      <div class="cut-meta">
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">編集意図</div>
+          <div class="cut-meta-value">「同質」の演出で商品の格を上げる</div>
+        </div>
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">注意</div>
+          <div class="cut-meta-value">刀は鞘から完全に抜かない／安全配慮</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 15s Cut 4 -->
+  <div class="cut">
+    <div class="cut-header">
+      <div class="cut-header-left">
+        <div class="cut-number">04</div>
+        <div class="cut-title"><span class="marker">▎</span>実食ギャップ</div>
+      </div>
+      <div class="cut-timing">00:10 - 00:13 / 3s</div>
+    </div>
+    <div class="cut-body">
+      <div class="cut-visual">
+        <div class="cut-visual-text">
+          兜を脱いだ武将（甲冑は着用したまま）が、ホイル焼きを一口食べる。<br>
+          一瞬の真顔 → 破顔一笑！「うまい！」と叫ぶ／または無言で親指を立てる。<br>
+          武の威厳と、人懐っこい笑顔のギャップを見せる最重要カット。
+        </div>
+      </div>
+      <div class="cut-narration">
+        うまい！　（または「天下無双！」）
+      </div>
+      <div class="cut-meta">
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">編集意図</div>
+          <div class="cut-meta-value">「強面→満面の笑み」の落差で愛される</div>
+        </div>
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">音声</div>
+          <div class="cut-meta-value">経営者本人の生リアクション</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 15s Cut 5 -->
+  <div class="cut">
+    <div class="cut-header">
+      <div class="cut-header-left">
+        <div class="cut-number">05</div>
+        <div class="cut-title"><span class="marker">▎</span>締めの口上＋CTA</div>
+      </div>
+      <div class="cut-timing">00:13 - 00:15 / 2s</div>
+    </div>
+    <div class="cut-body">
+      <div class="cut-telop">トラキチ農園 / BASE販売中</div>
+      <div class="cut-visual">
+        <div class="cut-visual-text">
+          甲冑姿の武将が、にんにくを高く掲げる。背景に「トラキチ農園」ロゴ＋商品名「シン・にんにく」をテロップで表示。<br>
+          下部に「プロフィールのリンクから」の矢印アニメ。
+        </div>
+      </div>
+      <div class="cut-narration">
+        いざ、実食！
+      </div>
+      <div class="cut-meta">
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">CTA</div>
+          <div class="cut-meta-value">プロフィールリンク誘導</div>
+        </div>
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">編集意図</div>
+          <div class="cut-meta-value">2秒で商品＋ブランド＋行動指示</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 60秒版 -->
+<section class="section" id="long">
+  <div class="section-header">
+    <div class="section-number">05 / LONG VERSION</div>
+    <h2 class="section-title">60秒版 <span class="accent">絵コンテ</span></h2>
+    <p class="section-desc">
+      ハリウッド予告編風の圧倒的スケール。10カット構成。LP埋込・YouTube Shorts用の完全版。
+    </p>
+  </div>
+
+  <!-- 60s Cut 1 -->
+  <div class="cut">
+    <div class="cut-header">
+      <div class="cut-header-left">
+        <div class="cut-number">01</div>
+        <div class="cut-title"><span class="marker">▎</span>静寂のオープニング</div>
+      </div>
+      <div class="cut-timing">00:00 - 00:08 / 8s</div>
+    </div>
+    <div class="cut-body">
+      <div class="cut-visual">
+        <div class="cut-visual-text">
+          薄暗い和室。ライトに照らされた美しい日本刀が、刀掛けに鎮座している（4秒）。<br>
+          → カメラが引くと、スーツ姿の男（後ろ姿のみ）が静かに刀を見つめている（2秒）。<br>
+          → 男が刀を手に取り、鞘に収める。「カチャリ」という音（2秒）。
+        </div>
+      </div>
+      <div class="cut-narration">
+        （無音／刀身の反射音と、衣擦れの音のみ）
+      </div>
+      <div class="cut-meta">
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">BGM</div>
+          <div class="cut-meta-value">無音／微かな環境音</div>
+        </div>
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">編集意図</div>
+          <div class="cut-meta-value">静の極み。次のカットの爆発に繋ぐ</div>
+        </div>
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">画角</div>
+          <div class="cut-meta-value">9:16 / シネマティック</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 60s Cut 2 -->
+  <div class="cut">
+    <div class="cut-header">
+      <div class="cut-header-left">
+        <div class="cut-number">02</div>
+        <div class="cut-title"><span class="marker">▎</span>場面転換・武将爆誕</div>
+      </div>
+      <div class="cut-timing">00:08 - 00:13 / 5s</div>
+    </div>
+    <div class="cut-body">
+      <div class="cut-telop">武将、爆誕。</div>
+      <div class="cut-visual">
+        <div class="cut-visual-text">
+          画面が真っ白にフラッシュ → 一気に開ける。<br>
+          眩しい太陽の下、特注の甲冑を纏った武将が、箕面の畑のど真ん中に堂々と立っている。ドローンで上空から旋回ショット。風で旗がなびく。<br>
+          BGMが和太鼓＋オーケストラで一気に立ち上がる。
+        </div>
+      </div>
+      <div class="cut-narration">
+        （和太鼓の連打＋ホーンセクションの炸裂）
+      </div>
+      <div class="cut-meta">
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">BGM</div>
+          <div class="cut-meta-value">和太鼓 × オーケストラ（盛り上げ）</div>
+        </div>
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">画角</div>
+          <div class="cut-meta-value">ドローン旋回 → 引き</div>
+        </div>
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">編集意図</div>
+          <div class="cut-meta-value">静→動の落差で覚醒させる</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 60s Cut 3 -->
+  <div class="cut">
+    <div class="cut-header">
+      <div class="cut-header-left">
+        <div class="cut-number">03</div>
+        <div class="cut-title"><span class="marker">▎</span>過去語り（貿易商時代）</div>
+      </div>
+      <div class="cut-timing">00:13 - 00:22 / 9s</div>
+    </div>
+    <div class="cut-body">
+      <div class="cut-visual">
+        <div class="cut-visual-text">
+          武将が静かにカメラに語りかける。<br>
+          差し込みカットで、世界地図のアニメーション、海外の港、空港のフライト掲示板、外国通貨が次々にフラッシュ表示される（権利フリー素材／AI生成可）。
+        </div>
+      </div>
+      <div class="cut-narration">
+        世界中の海を渡り、あらゆるビジネスを経験した。<br>
+        だが、私が本当に人生を懸けるべき『宝』は──<br>
+        この、足元の土の中にあった。
+      </div>
+      <div class="cut-meta">
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">BGM</div>
+          <div class="cut-meta-value">荘厳な弦楽四重奏</div>
+        </div>
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">編集意図</div>
+          <div class="cut-meta-value">「過去→気づき」の物語を9秒で凝縮</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 60s Cut 4 -->
+  <div class="cut">
+    <div class="cut-header">
+      <div class="cut-header-left">
+        <div class="cut-number">04</div>
+        <div class="cut-title"><span class="marker">▎</span>哲学：刀と土の融合</div>
+      </div>
+      <div class="cut-timing">00:22 - 00:30 / 8s</div>
+    </div>
+    <div class="cut-body">
+      <div class="cut-telop">玉鋼から名刀。<br>箕面の土から、シン・にんにく。</div>
+      <div class="cut-visual">
+        <div class="cut-visual-text">
+          【クロスオーバー編集／2秒ずつ交互】<br>
+          ① 刀匠が刀を打つ映像（フリー素材）／または刀の手入れシーン<br>
+          ② 武将が畑の土を握り、指の間からこぼれるマクロ<br>
+          ③ 刀身が水で清められる映像<br>
+          ④ にんにくが洗われ、白い肌が露わになるマクロ
+        </div>
+      </div>
+      <div class="cut-narration">
+        名刀が、玉鋼（たまはがね）と火と水で生まれるように──<br>
+        究極のにんにくもまた、この箕面の土から生まれる。
+      </div>
+      <div class="cut-meta">
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">編集意図</div>
+          <div class="cut-meta-value">「同質性」の暗示で商品の格を上げる</div>
+        </div>
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">BGM</div>
+          <div class="cut-meta-value">尺八＋琴の和ムード</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 60s Cut 5 -->
+  <div class="cut">
+    <div class="cut-header">
+      <div class="cut-header-left">
+        <div class="cut-number">05</div>
+        <div class="cut-title"><span class="marker">▎</span>収穫の儀式</div>
+      </div>
+      <div class="cut-timing">00:30 - 00:37 / 7s</div>
+    </div>
+    <div class="cut-body">
+      <div class="cut-visual">
+        <div class="cut-visual-text">
+          甲冑の籠手をつけた手で、土から「シン・にんにく」を力強く掘り出す（スローモーション）。<br>
+          泥が舞い、にんにくの白さが際立つ。武将の真剣な眼差しのアップ。
+        </div>
+      </div>
+      <div class="cut-narration">
+        （シズル音：土の音、にんにくが抜ける音、武将の息遣い）
+      </div>
+      <div class="cut-meta">
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">画角</div>
+          <div class="cut-meta-value">マクロ → 武将の表情アップ</div>
+        </div>
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">編集意図</div>
+          <div class="cut-meta-value">「儀式」感の演出で神々しさを纏う</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 60s Cut 6 -->
+  <div class="cut">
+    <div class="cut-header">
+      <div class="cut-header-left">
+        <div class="cut-number">06</div>
+        <div class="cut-title"><span class="marker">▎</span>商品の格付け</div>
+      </div>
+      <div class="cut-timing">00:37 - 00:43 / 6s</div>
+    </div>
+    <div class="cut-body">
+      <div class="cut-telop">天下無双。シン・にんにく。</div>
+      <div class="cut-visual">
+        <div class="cut-visual-text">
+          黒バックに、刀掛けと並んで「シン・にんにく」が陳列されている。スポット照明。<br>
+          カメラがゆっくりとパンして、商品の質感（白さ・大きさ・粒）を見せていく。
+        </div>
+      </div>
+      <div class="cut-narration">
+        名付けて──シン・にんにく。<br>
+        この一片に、私の人生のすべてが詰まっている。
+      </div>
+      <div class="cut-meta">
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">編集意図</div>
+          <div class="cut-meta-value">商品を「美術品」として陳列</div>
+        </div>
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">BGM</div>
+          <div class="cut-meta-value">琴の独奏（神聖さ）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 60s Cut 7 -->
+  <div class="cut">
+    <div class="cut-header">
+      <div class="cut-header-left">
+        <div class="cut-number">07</div>
+        <div class="cut-title"><span class="marker">▎</span>調理シズル</div>
+      </div>
+      <div class="cut-timing">00:43 - 00:48 / 5s</div>
+    </div>
+    <div class="cut-body">
+      <div class="cut-visual">
+        <div class="cut-visual-text">
+          フライパンの上で、にんにくが油の中ではじける。湯気と香りが立ち上る。<br>
+          → ホイル焼きが開かれ、中からとろけるにんにくの中身が露わに。マクロで質感を見せる。
+        </div>
+      </div>
+      <div class="cut-narration">
+        （シズル音優先：油の音、湯気の音、香りの演出）
+      </div>
+      <div class="cut-meta">
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">編集意図</div>
+          <div class="cut-meta-value">食欲スイッチを物理的に押す</div>
+        </div>
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">BGM</div>
+          <div class="cut-meta-value">音楽を一旦下げ、シズル音を主役に</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 60s Cut 8 -->
+  <div class="cut">
+    <div class="cut-header">
+      <div class="cut-header-left">
+        <div class="cut-number">08</div>
+        <div class="cut-title"><span class="marker">▎</span>武将のアンチテーゼ</div>
+      </div>
+      <div class="cut-timing">00:48 - 00:54 / 6s</div>
+    </div>
+    <div class="cut-body">
+      <div class="cut-telop">スーパーの安いにんにくで、満足するな。</div>
+      <div class="cut-visual">
+        <div class="cut-visual-text">
+          兜を被った武将がカメラを真っ直ぐ見据え、強気の表情で語る。<br>
+          挑発的だが、商品への愛と確信に満ちた表情。
+        </div>
+      </div>
+      <div class="cut-narration">
+        スーパーの安いだけのにんにくで、満足している現代人よ──<br>
+        目を、覚ませ！
+      </div>
+      <div class="cut-meta">
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">編集意図</div>
+          <div class="cut-meta-value">熱狂的ファン化のためのアジテーション</div>
+        </div>
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">注意</div>
+          <div class="cut-meta-value">他社批判ではなく「自社賛美」に着地</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 60s Cut 9 -->
+  <div class="cut">
+    <div class="cut-header">
+      <div class="cut-header-left">
+        <div class="cut-number">09</div>
+        <div class="cut-title"><span class="marker">▎</span>武と笑のギャップ（実食）</div>
+      </div>
+      <div class="cut-timing">00:54 - 00:58 / 4s</div>
+    </div>
+    <div class="cut-body">
+      <div class="cut-visual">
+        <div class="cut-visual-text">
+          武将が兜を脱ぐ（重要なギャップ演出）。汗で乱れた髪。<br>
+          完成した料理を一口、頬張る。<br>
+          一瞬の真顔の後、人懐っこい満面の笑み！「うまい！」と本心から叫ぶ。
+        </div>
+      </div>
+      <div class="cut-narration">
+        うまい！　これが、私の人生だ。
+      </div>
+      <div class="cut-meta">
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">編集意図</div>
+          <div class="cut-meta-value">威厳→人間味の落差で「愛される」</div>
+        </div>
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">音声</div>
+          <div class="cut-meta-value">経営者本人の生リアクション必須</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 60s Cut 10 -->
+  <div class="cut">
+    <div class="cut-header">
+      <div class="cut-header-left">
+        <div class="cut-number">10</div>
+        <div class="cut-title"><span class="marker">▎</span>締めの口上＋CTA</div>
+      </div>
+      <div class="cut-timing">00:58 - 01:00 / 2s</div>
+    </div>
+    <div class="cut-body">
+      <div class="cut-telop">トラキチ農園 / BASEで販売中</div>
+      <div class="cut-visual">
+        <div class="cut-visual-text">
+          黒背景に「トラキチ農園」の墨書きロゴ。<br>
+          下部に「シン・にんにく / BASE販売中」のテロップとQRコード。<br>
+          武将のシルエットが小さく重なる。
+        </div>
+      </div>
+      <div class="cut-narration">
+        天下無双の味、トラキチ農園の『シン・にんにく』。<br>
+        いざ、実食！
+      </div>
+      <div class="cut-meta">
+        <div class="cut-meta-item">
+          <div class="cut-meta-label">CTA</div>
+          <div class="cut-meta-value">QR＋プロフィールリンク</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SNS運用 -->
+<section class="section" id="sns">
+  <div class="section-header">
+    <div class="section-number">06 / SNS OPERATION</div>
+    <h2 class="section-title">SNS<span class="accent">運用方針</span></h2>
+    <p class="section-desc">
+      PV単発で終わらせない。武将農家のキャラクターを軸にした継続的なシリーズ展開で、家臣（ファン）を増やす。
+    </p>
+  </div>
+
+  <div class="sns-grid">
+    <div class="sns-card">
+      <span class="sns-tag">SERIES 01</span>
+      <h3>「出陣の儀」シリーズ</h3>
+      <p>
+        植え付け・収穫・出荷の節目を「出陣」と称し、毎回甲冑姿で畑に立つドキュメンタリーシリーズ。シネマティック撮影＋ドローン使用。月1〜2回投稿で「待たれる」コンテンツに育てる。
+      </p>
+    </div>
+
+    <div class="sns-card">
+      <span class="sns-tag">SERIES 02</span>
+      <h3>「武将、世界を語る」</h3>
+      <p>
+        貿易商時代のエピソードを、書斎で日本刀を眺めながら語るインタビュー形式。「あの国でこんなにんにくに出会った」等、属人性とブランドを同時に育てる。1本3〜5分。YouTubeメイン。
+      </p>
+    </div>
+
+    <div class="sns-card">
+      <span class="sns-tag">SERIES 03</span>
+      <h3>「武将、料理を斬る」</h3>
+      <p>
+        甲冑＋エプロン姿でシン・にんにくを使った料理を作るシリーズ。最後は必ず「うまい！」で締める。レシピ動画として実用性も担保。料理系インフルエンサーとのコラボ可能性大。
+      </p>
+    </div>
+
+    <div class="sns-card">
+      <span class="sns-tag">SERIES 04</span>
+      <h3>「家臣からの便り」</h3>
+      <p>
+        購入者（家臣）の感想・調理写真をリポスト。コメント欄では武将口調で返信「よくぞ申した、家臣よ！」。UGC（ユーザー生成コンテンツ）でコミュニティ感を醸成。
+      </p>
+    </div>
+
+    <div class="sns-card">
+      <span class="sns-tag">COLLAB</span>
+      <h3>外部コラボ戦略</h3>
+      <p>
+        ① 料理系YouTuberに「天下無双の食材」として送付　② ビジネス系インフルエンサーに「武将農家」のストーリー取材依頼　③ 大食い系に「にんにく祭り」企画。各ジャンルの異色性で注目を集める。
+      </p>
+    </div>
+
+    <div class="sns-card">
+      <span class="sns-tag">HASHTAG</span>
+      <h3>固定ハッシュタグ</h3>
+      <p>
+        #武将農家　#シンにんにく　#トラキチ農園　#天下無双　#いざ実食　#サムライファーマー　#甲冑農家　#箕面の宝<br>
+        投稿ごとに固定3〜5個＋関連2〜3個で安定運用。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ナレーション台本 -->
+<section class="section" id="narration">
+  <div class="section-header">
+    <div class="section-number">07 / NARRATION SCRIPT</div>
+    <h2 class="section-title">ナレーション<span class="accent">完全台本</span></h2>
+    <p class="section-desc">
+      経営者本人の生声録音を基本とする。AI音声を使う場合は「重低音の男性ナレーター」（ドキュメンタリー調）を選定。
+    </p>
+  </div>
+
+  <div class="script-block">
+    <div class="script-section-title">15秒版 完全台本</div>
+    <div class="script-content">
+      <span class="script-time">[00:00-00:03]</span><br>
+      （無音／和太鼓と土を掘る音のみ）<br><br>
+
+      <span class="script-time">[00:03-00:07]</span><br>
+      我こそは、世界を渡り歩いた<span class="script-pause">／</span>元貿易商！<br>
+      天下無双の『シン・にんにく』を育てる者なり！<br><br>
+
+      <span class="script-time">[00:07-00:10]</span><br>
+      （シズル音優先／無声）<br><br>
+
+      <span class="script-time">[00:10-00:13]</span><br>
+      うまい！<span class="script-pause">／</span>（または「天下無双！」）<br><br>
+
+      <span class="script-time">[00:13-00:15]</span><br>
+      いざ、実食！
+    </div>
+  </div>
+
+  <div class="ornament">⚔ ◆ ⚔</div>
+
+  <div class="script-block">
+    <div class="script-section-title">60秒版 完全台本</div>
+    <div class="script-content">
+      <span class="script-time">[00:00-00:08]</span><br>
+      （無音／衣擦れと刀身の音のみ）<br><br>
+
+      <span class="script-time">[00:08-00:13]</span><br>
+      （和太鼓＋オーケストラ／無声）<br><br>
+
+      <span class="script-time">[00:13-00:22]</span><br>
+      世界中の海を渡り、<span class="script-pause">／</span>あらゆるビジネスを経験した。<br>
+      だが、私が本当に人生を懸けるべき『宝』は──<br>
+      この、足元の土の中にあった。<br><br>
+
+      <span class="script-time">[00:22-00:30]</span><br>
+      名刀が、玉鋼と火と水で生まれるように──<br>
+      究極のにんにくもまた、<span class="script-pause">／</span>この箕面の土から生まれる。<br><br>
+
+      <span class="script-time">[00:30-00:37]</span><br>
+      （シズル音優先／無声）<br><br>
+
+      <span class="script-time">[00:37-00:43]</span><br>
+      名付けて──シン・にんにく。<br>
+      この一片に、<span class="script-pause">／</span>私の人生のすべてが詰まっている。<br><br>
+
+      <span class="script-time">[00:43-00:48]</span><br>
+      （シズル音優先／無声）<br><br>
+
+      <span class="script-time">[00:48-00:54]</span><br>
+      スーパーの安いだけのにんにくで、<span class="script-pause">／</span>満足している現代人よ──<br>
+      目を、<span class="script-pause">／</span>覚ませ！<br><br>
+
+      <span class="script-time">[00:54-00:58]</span><br>
+      うまい！　これが、私の人生だ。<br><br>
+
+      <span class="script-time">[00:58-01:00]</span><br>
+      天下無双の味、トラキチ農園の『シン・にんにく』。<br>
+      いざ、実食！
+    </div>
+  </div>
+</section>
+
+<!-- リスク管理 -->
+<section class="section" id="risk">
+  <div class="section-header">
+    <div class="section-number">08 / RISK MANAGEMENT</div>
+    <h2 class="section-title">撮影<span class="accent">リスク管理</span></h2>
+    <p class="section-desc">
+      甲冑撮影・日本刀撮影には固有のリスクがある。撮影前に必ず確認・対策すること。
+    </p>
+  </div>
+
+  <div class="risk-box">
+    <div class="risk-box-title">⚠ 必ず事前確認すべき5項目 ⚠</div>
+    <div class="risk-list">
+      <div class="risk-item">
+        <div class="risk-item-head">① 甲冑の重量と熱中症リスク</div>
+        <div class="risk-item-body">
+          特注甲冑は10〜25kg。屋外撮影時は熱中症リスクが極めて高い。撮影は早朝・夕方に限定。塩タブレット・経口補水液・予備の作業着を必ず常備。15分撮影→30分休憩のサイクル厳守。夏季撮影は原則回避。
+        </div>
+      </div>
+
+      <div class="risk-item">
+        <div class="risk-item-head">② 日本刀の取り扱い・銃刀法</div>
+        <div class="risk-item-body">
+          登録証のある真剣のみ撮影使用可。撮影時は完全に鞘から抜かない（刀身チラ見せまで）。屋外への持ち出しは登録証携帯必須。模擬刀・居合刀での代替も検討推奨。SNS投稿時は「刀剣登録済」と明記。
+        </div>
+      </div>
+
+      <div class="risk-item">
+        <div class="risk-item-head">③ 景表法・優良誤認リスク</div>
+        <div class="risk-item-body">
+          「天下無双」「世界一」等の最上級表現は主観表現として使用可だが、「香り3倍」等の数値表現は客観根拠が必須。「私の感想です」「当農園比」等の注釈を画面下部に常時小さく表示。「他社のにんにくはダメ」と直接言わない（Cut08は表現に注意）。
+        </div>
+      </div>
+
+      <div class="risk-item">
+        <div class="risk-item-head">④ 「貿易商」の事実関係</div>
+        <div class="risk-item-body">
+          経歴の事実確認必須。年商規模・取引国・期間など、具体的に問われた時に答えられる範囲で表現。「世界を飛び回った」「縁故を築いた」等の抽象表現は安全。具体的な数字・社名は経営者ご本人の確認後のみ使用。
+        </div>
+      </div>
+
+      <div class="risk-item">
+        <div class="risk-item-head">⑤ 甲冑のディテール権利関係</div>
+        <div class="risk-item-body">
+          甲冑デザイナーへの撮影・SNS掲載許諾を事前取得。甲冑師の名前をクレジット表記すれば、双方の宣伝になりWin-Win。家紋を入れる場合、既存の歴史的家紋の使用は基本可だが、特定の家系・神社仏閣の専用紋は要注意。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-mon">⚔ 紋 ⚔</div>
+  <strong>シン・にんにく Promotion Storyboard v2.0<br>— Samurai Farmer Edition —</strong>
+  Draft by トラキチ農園 × Koki Takahashi<br>
+  Next Step → 経営者へのキャラ設定確認 → 甲冑完成日確認 → 撮影日決定<br><br>
+  天下無双の一片を、世に問う。
+</footer>
+
+</body>
+</html>
